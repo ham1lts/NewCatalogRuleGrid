@@ -13,8 +13,8 @@ class ListingDataProvider extends DataProvider
         $column = 'rule_id';
 
         $adminSubQuery = new \Zend_Db_expr("(
-                select rule_id, GROUP_CONCAT(website_id ORDER BY website_id SEPARATOR ',') as website_id
-                from catalogrule_website
+                select rule_id, GROUP_CONCAT(name ORDER BY name SEPARATOR ', ') as website_id
+                from catalogrule_website left join store_website ON catalogrule_website.website_id = store_website.website_id
                 group by rule_id
                 )");
 

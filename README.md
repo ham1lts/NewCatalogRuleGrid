@@ -1,3 +1,4 @@
 TODO: 
-- Website (fazendo join com a tabela catalogrule_website)
-- 
+- Grupos de Clientes
+- Regras 
+- Melhorar tipo do desconto
