@@ -134,5 +134,15 @@
                 <indexField>rule_id</indexField>
             </settings>
         </actionsColumn>
+        <actionsColumn name="view_info" class="FreireH\CatalogRuleGrid\Ui\Component\Listing\Column\Info">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">More Info</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="viewUrlPath" xsi:type="string">grid/catalogrule/info</item>
+                    <item name="urlEntityParamName" xsi:type="string">rule_id</item>
+                </item>
+            </argument>
+        </actionsColumn>
     </columns>
 </listing>

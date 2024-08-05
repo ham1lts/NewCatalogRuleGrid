@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace FreireH\CatalogRuleGrid\Controller\Adminhtml\CatalogRule;
@@ -12,8 +13,7 @@ use Magento\Framework\Exception\NotFoundException;
 class Index extends Action implements HttpGetActionInterface
 {
     public const string ADMIN_RESOURCE = 'FreireH_CatalogRuleGrid::listing';
-
-
+    
     public function execute(): ResultInterface
     {
         $resultPage = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_PAGE);

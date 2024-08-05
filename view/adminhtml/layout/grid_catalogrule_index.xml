@@ -5,5 +5,9 @@
         <referenceContainer name="content">
             <uiComponent name="catalogrulegrid"/>
         </referenceContainer>
+        <referenceContainer name="js">
+            <block class="FreireH\CatalogRuleGrid\Block\Adminhtml\Selector"
+                   template="FreireH_CatalogRuleGrid::view/info.phtml" name="catalogrulegrid.view.model.js"/>
+        </referenceContainer>
     </body>
 </page>

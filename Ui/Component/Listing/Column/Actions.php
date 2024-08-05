@@ -26,11 +26,10 @@ class Actions extends Column
      * @param array $dataSource
      * @return array
      */
-    public function prepareDataSource(array $dataSource)
+    public function prepareDataSource(array $dataSource): array
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {
-                // here we can also use the data from $item to configure some parameters of an action URL
                 $item[$this->getData('name')] = [
                     'edit' => [
                         'href' => $this->url->getUrl('catalog_rule/promo_catalog/edit/',
