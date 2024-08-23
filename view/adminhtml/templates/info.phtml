@@ -1,5 +1,40 @@
-<?php /** @var $block FreireH\CatalogRuleGrid\Block\Adminhtml\Info*/?>
+<?php /** @var $block FreireH\CatalogRuleGrid\Block\Adminhtml\Info */ ?>
 
-<h1>TODO:
-<?= $block->getName();?>
-</h1>
+<?php
+$catalogRule = $block->getCatalogRule();
+// Verifique se o array de grupos de clientes foi passado para o bloco
+if ($catalogRule->getCustomerGroupIds() !== null) :
+    ?>
+    <div class="customer-groups">
+        <h1>Customer Groups</h1>
+        <ul>
+            <?php foreach ($catalogRule->getCustomerGroupIds() as $groupId) : ?>
+                <li><?= $block->getGroupName($groupId) ?></li>
+            <?php endforeach; ?>
+        </ul>
+        <?php
+        // Verifique se as informações serializadas foram passadas para o bloco
+        $condSerialized = $catalogRule->getConditionsSerialized() !== null ? json_decode($catalogRule->getConditionsSerialized(), true) : null;
+        $actionSerialized = $catalogRule->getActionsSerialized() !== null ? json_decode($catalogRule->getActionsSerialized(), true) : null;
+        ?>
+
+        <h2>Serialized Information</h2>
+        <div class="cond-serialized">
+            <h3>CondSerialized</h3>
+            <pre><?= $condSerialized['value'] ?></pre>
+        </div>
+        <div class="action-serialized">
+            <h3>ActionSerialized</h3>
+            <pre><?= $actionSerialized['value'] ?></pre>
+        </div>
+    </div>
+
+<?php
+else:
+    // Caso o array de grupos de clientes não esteja definido ou não seja um array
+    ?>
+    <div class="no-customer-groups">
+        <p>No customer groups available.</p>
+    </div>
+<?php
+endif;

@@ -6,19 +6,33 @@ namespace FreireH\CatalogRuleGrid\Block\Adminhtml;
 
 use Magento\Backend\Block\Template;
 use Magento\Backend\Block\Template\Context;
+use Magento\Customer\Api\GroupRepositoryInterface;
+use Magento\Directory\Helper\Data as DirectoryHelper;
+use Magento\Framework\Json\Helper\Data as JsonHelper;
 
 class Info extends Template
 {
     public $_template = 'FreireH_CatalogRuleGrid::info.phtml';
 
     public function __construct(
-        Context $context
+        Context $context,
+        private readonly GroupRepositoryInterface $groupRepository
     ) {
         parent::__construct($context);
     }
 
-    public function getName(): string
+    public function setCatalogRule($rule)
     {
-        return 'teste';
+        $this->catalogRule = $rule;
+    }
+
+    public function getCatalogRule()
+    {
+        return $this->catalogRule;
+    }
+
+    public function getGroupName(mixed $groupId): string
+    {
+        return $this->groupRepository->getById($groupId)->getCode() ?? "-";
     }
 }
