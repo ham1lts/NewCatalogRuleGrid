@@ -21,8 +21,16 @@ if ($catalogRule->getCustomerGroupIds() !== null) :
         <h2>Serialized Information</h2>
         <div class="cond-serialized">
             <h3>CondSerialized</h3>
-            <pre><?= $condSerialized['value'] ?></pre>
+            <h4>
+
+            </h4>
+            <?php foreach ($catalogRule->getConditions()->getConditions() as $condition) : ?>
+                <pre>
+                <?= $block->getTextCondition($condition) ?>
+                </pre>
+            <?php endforeach; ?>
         </div>
+
         <div class="action-serialized">
             <h3>ActionSerialized</h3>
             <pre><?= $actionSerialized['value'] ?></pre>
