@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+<!--        <add id="FreireH_CatalogRuleGrid::listing" sortOrder="1" title="Teste" module="FreireH_CatalogRuleGrid"-->
+<!--             parent="Magento_CatalogRule::promo" resource="FreireH_CatalogRuleGrid::listing" translate="title"-->
+<!--             action="grid/catalogrule/index"/>-->
+        <update id="Magento_CatalogRule::promo_catalog" action="grid/catalogrule/index"/>
+    </menu>
+</config>

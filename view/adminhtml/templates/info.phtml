@@ -1,0 +1,25 @@
+<?php /** @var $block FreireH\CatalogRuleGrid\Block\Adminhtml\Info */ ?>
+
+<?php
+$catalogRule = $block->getCatalogRule();
+if ($catalogRule->getCustomerGroupIds() !== null) :
+    ?>
+    <div class="fieldset-wrapper">
+        <div class="fieldset-wrapper-title">
+            <span class="title"><?= $block->escapeHtml(__('Customer Groups')) ?></span>
+        </div>
+        <table class="admin__table-secondary">
+            <tbody>
+            <?php foreach ($catalogRule->getCustomerGroupIds() as $groupId) : ?>
+                <tr><th><?= $block->getGroupName($groupId) ?></th></tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+        <div class="fieldset-wrapper-title">
+            <span class="title"><?= $block->escapeHtml(__('Conditions')) ?></span>
+        </div>
+        <span><?= $block->getConditions() ?></span>
+    </div>
+<?php
+endif;
+?>
