@@ -3,6 +3,7 @@
     "description": "Este módulo adiciona uma funcionalidade para visualizar uma descrição breve das regras diretamente na grid de regras de catálogo no Magento 2.",
     "type": "magento2-module",
     "version": "1.0.0",
+    "license": "MIT",
     "require": {
         "magento/framework": "*",
         "php": ">=8.1",
