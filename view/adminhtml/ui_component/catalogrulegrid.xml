@@ -103,13 +103,13 @@
         </column>
         <column name="simple_action">
             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\CatalogRule\Model\Rule\Action\SimpleActionOptionsProvider</item>
                 <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
                     <item name="editor" xsi:type="array">
-                        <item name="editorType" xsi:type="string">text</item>
-                        <item name="validation" xsi:type="array">
-                            <item name="required-entry" xsi:type="boolean">true</item>
-                        </item>
+                        <item name="editorType" xsi:type="string">select</item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">Discount Type</item>
                 </item>
@@ -125,7 +125,7 @@
                             <item name="required-entry" xsi:type="boolean">true</item>
                         </item>
                     </item>
-                    <item name="label" xsi:type="string" translate="true">Discount Value</item>
+                    <item name="label" xsi:type="string" translate="true">Discount Amount</item>
                 </item>
             </argument>
         </column>
@@ -137,7 +137,7 @@
         <actionsColumn name="view_info" class="FreireH\CatalogRuleGrid\Ui\Component\Listing\Column\Info">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">More Info</item>
+                    <item name="label" xsi:type="string" translate="true">Details</item>
                     <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
                     <item name="viewUrlPath" xsi:type="string">grid/catalogrule/info</item>
                     <item name="urlEntityParamName" xsi:type="string">rule_id</item>

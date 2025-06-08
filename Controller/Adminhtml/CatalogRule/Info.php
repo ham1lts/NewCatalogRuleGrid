@@ -28,10 +28,11 @@ class Info extends Action
             ->createBlock(
                 \FreireH\CatalogRuleGrid\Block\Adminhtml\Info::class
             );
+
         $catalogRule = $this->catalogRuleRepository->get($this->_request->getParam('id'));
         $content->setCatalogRule($catalogRule);
-        //setConditions() $catalogRule->getConditions()
         $resultRaw = $this->resultRawFactory->create();
+
         return $resultRaw->setContents($content->toHtml());
     }
 }

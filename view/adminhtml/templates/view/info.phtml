@@ -33,9 +33,9 @@
                     this.modal.html(jQuery(data).html());
                 } else {
                     this.modal = jQuery(data).modal({
-                        title: '<?= /* @escapeNotVerified */ __('Rule Info'); ?>',
+                        title: '<?= /* @escapeNotVerified */ __('Rule Information'); ?>',
                         modalClass: 'magento',
-                        type: 'slide',
+                        type: 'popup',
                         firedElementId: elementId,
                         buttons: [{
                             text: jQuery.mage.__('Close'),

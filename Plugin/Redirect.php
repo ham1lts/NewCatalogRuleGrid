@@ -12,11 +12,7 @@ class Redirect
       private readonly ResponseFactory $responseFactory,
       private readonly UrlInterface $url
     ) {}
-//    /**
-//     * @param Index $subject
-//     * @param null $result
-//     * @return void
-//     */
+
     public function afterExecute(Index $subject, $result)
     {
         $redirectionUrl = $this->url->getUrl('grid/catalogrule/index');

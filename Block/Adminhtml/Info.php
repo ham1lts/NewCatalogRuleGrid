@@ -6,47 +6,68 @@ namespace FreireH\CatalogRuleGrid\Block\Adminhtml;
 
 use Magento\Backend\Block\Template;
 use Magento\Backend\Block\Template\Context;
+use Magento\CatalogRule\Api\Data\RuleInterface;
 use Magento\Customer\Api\GroupRepositoryInterface;
-use Magento\Directory\Helper\Data as DirectoryHelper;
-use Magento\Framework\Json\Helper\Data as JsonHelper;
-use Magento\Rule\Model\Condition\Combine;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 class Info extends Template
 {
+
     public $_template = 'FreireH_CatalogRuleGrid::info.phtml';
+    private RuleInterface $catalogRule;
 
     public function __construct(
         Context $context,
-        private readonly GroupRepositoryInterface $groupRepository,
-        private readonly Combine $combineCondition
+        private readonly GroupRepositoryInterface $groupRepository
     ) {
         parent::__construct($context);
     }
 
-    public function setCatalogRule($rule)
+    /**
+     * @param RuleInterface $rule
+     * @return void
+     */
+    public function setCatalogRule($rule): void
     {
         $this->catalogRule = $rule;
     }
 
-    public function getCatalogRule()
+    /**
+     * @return RuleInterface
+     */
+    public function getCatalogRule(): RuleInterface
     {
         return $this->catalogRule;
     }
 
+    /**
+     * @param mixed $groupId
+     * @return string
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     */
     public function getGroupName(mixed $groupId): string
     {
         return $this->groupRepository->getById($groupId)->getCode() ?? "-";
     }
 
-    public function getCondition(array $condition)
+    /**
+     * @return array|null
+     */
+    public function getCondition(): ?array
     {
-        return $this->combineCondition->loadArray($condition);
+        return $this->catalogRule->getConditionsSerialized()
+            ? json_decode($this->catalogRule->getConditionsSerialized(), true)
+            : null;
     }
 
-    public function getTextCondition(mixed $condition)
+    /**
+     * @return string
+     */
+    public function getTextCondition(): string
     {
-//        if ()
-        return __($condition->getAttributeName()->getText()) . " " . __($condition->getOperatorName()->getText()) . " " . __($condition->getValue());
+        $conditionString = $this->catalogRule->getConditions()->asStringRecursive();
+        return nl2br(preg_replace('/ /', '&nbsp;', $conditionString));
     }
-
 }
